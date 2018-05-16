@@ -1,0 +1,16 @@
+PODS:
+  - SwiftGraph (1.5.1)
+
+DEPENDENCIES:
+  - SwiftGraph
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SwiftGraph
+
+SPEC CHECKSUMS:
+  SwiftGraph: 19bc20fca313a32c3d69e3a84f8756a12129f91b
+
+PODFILE CHECKSUM: b6b222c90dd672585e2fbb9f33649dfe15e71ef7
+
+COCOAPODS: 1.5.2

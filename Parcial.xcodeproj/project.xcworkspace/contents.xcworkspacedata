@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:../Parcial/Blackjack/Manager">
+   </FileRef>
+   <FileRef
+      location = "group:../Parcial/Blackjack/Models">
+   </FileRef>
+   <FileRef
+      location = "group:../Parcial/Blackjack/ViewControllers">
+   </FileRef>
+   <FileRef
+      location = "group:../Parcial/Blackjack/Views">
+   </FileRef>
+   <FileRef
+      location = "self:Parcial.xcodeproj">
+   </FileRef>
+</Workspace>

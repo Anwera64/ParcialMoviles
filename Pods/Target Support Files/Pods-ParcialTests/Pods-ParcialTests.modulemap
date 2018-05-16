@@ -1,0 +1,6 @@
+framework module Pods_ParcialTests {
+  umbrella header "Pods-ParcialTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
