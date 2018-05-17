@@ -50,9 +50,9 @@ class GoManager {
     func setPoint(_ pos: Int) {
         graph.vertexAtIndex(pos)?.player = player
         print("Clicked: \(pos) ")
+        checkIfLocked(pos: pos)
         graph.neighborsForIndex(pos).forEach { (neighbour) in
             if let position = neighbour?.position {
-               
                 checkIfLocked(pos: position)
             }
         }
@@ -61,34 +61,32 @@ class GoManager {
     
     private func checkIfLocked(pos: Int) {
         var locked = true
-        switch pos {
-        case 0, 7, 80, 73:
-            return
-        default:
-            print("\n Neighbour check: \(pos) \(graph.vertexAtIndex(pos)!.player) ")
-            graph.neighborsForIndex(pos).forEach { (neighbour) in
-                print("\(neighbour!.position) \(neighbour!.player)")
-                if neighbour!.player == graph.vertexAtIndex(pos)!.player || neighbour!.player == Player.none, locked, graph.vertexAtIndex(pos)!.player != Player.none {
-                        locked = false
-                }
-            }
-            if locked {
-                delegate.removePoint(pos: pos)
-                switch player! {
-                case .player:
-                    score2 += 1
-                case .player2:
-                    score1 += 1
-                default:
-                    break
-                }
+        
+        print("\n Neighbour check: \(pos) \(graph.vertexAtIndex(pos)!.player) ")
+        graph.neighborsForIndex(pos).forEach { (neighbour) in
+            print("\(neighbour!.position) \(neighbour!.player)")
+            if graph.vertexAtIndex(pos)!.player == Player.none || neighbour!.player == Player.none || neighbour!.player == graph.vertexAtIndex(pos)!.player, locked  {
+                locked = false
             }
         }
+        if locked {
+            delegate.removePoint(pos: pos)
+            graph.vertexAtIndex(pos)!.player = Player.none
+            switch player! {
+            case .player:
+                score2 += 1
+            case .player2:
+                score1 += 1
+            default:
+                break
+            }
+        }
+        
     }
     
     func reset() {
         graph.forEach { (vertex) in
-            vertex?.player = .none
+            vertex!.player = .none
         }
         player = .player
         score1 = 0
