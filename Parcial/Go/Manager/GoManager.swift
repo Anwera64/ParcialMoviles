@@ -38,7 +38,7 @@ class GoManager {
         for i in 0...80 {
             let point = Point(position: i, player: .none)
             _ = graph.addVertex(point)
-            if i - 1 >= 0 {
+            if i - 1 >= 0, i%9 != 0 {
                 graph.addEdge(from: i-1, to: i)
             }
             if i - 9 >= 0 {
@@ -86,7 +86,7 @@ class GoManager {
     
     func reset() {
         graph.forEach { (vertex) in
-            vertex!.player = .none
+            vertex!.player = Player.none
         }
         player = .player
         score1 = 0
